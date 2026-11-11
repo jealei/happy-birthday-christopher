@@ -476,7 +476,7 @@ body::after {
 .reel__track {
   display: flex;
   width: max-content;
-  animation: marquee 50s linear infinite;
+  animation: marquee 75s linear infinite;
 }
 .reel__window:hover .reel__track { animation-play-state: paused; }
 .polaroid {

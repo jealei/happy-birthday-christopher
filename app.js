@@ -54,11 +54,17 @@ const KNOWS = [
   'Oslo', 'Bergen', 'Trondheim', 'Tromsø', 'London', 'Tokyo', 'New York',
   'Buenos Aires', 'Antarctica', 'The Moon', 'Every record shop on Earth',
 ];
+// Two photos from a friend, the rest from instagram.com/ramonasteaparty
 const PHOTOS = [
-  { src: 'images/stage-stripes.jpg', w: 1500, h: 2000, alt: 'Christopher sings and plays a red guitar on stage' },
-  { src: 'images/stage-leopard.webp', w: 2000, h: 1333, alt: 'Christopher in a leopard shirt sticks his tongue out on an outdoor stage' },
+  { src: 'images/band-festival.jpg', w: 1000, h: 666, caption: 'The world knows', alt: 'Ramonas Tea Party on a festival stage in front of a huge crowd' },
+  { src: 'images/stage-stripes.jpg', w: 1500, h: 2000, caption: 'Oh yeah!', alt: 'Christopher sings and plays a red guitar on stage' },
+  { src: 'images/timer-selfie.jpg', w: 760, h: 1000, caption: 'Countdown mode', alt: 'Christopher holds up a phone timer in a selfie with a bandmate' },
+  { src: 'images/stage-leopard.webp', w: 2000, h: 1333, caption: 'Rock god', alt: 'Christopher in a leopard shirt sticks his tongue out on an outdoor stage' },
+  { src: 'images/stage-yellow-guitar.jpg', w: 1000, h: 1000, caption: 'Birthday boy', alt: 'Christopher sings with a yellow guitar next to a bandmate' },
+  { src: 'images/pole.jpg', w: 750, h: 1000, caption: 'Legend', alt: 'Christopher holds a long wooden pole while a bandmate looks shocked' },
+  { src: 'images/stage-banner.jpg', w: 754, h: 1000, caption: 'Tea party!', alt: 'The Ramonas Tea Party stage with the band banner and guitars' },
+  { src: 'images/fan-art.jpg', w: 750, h: 1000, caption: 'Fan art ♥', alt: 'A hand-drawn Ramonas Tea Party sign' },
 ];
-const CAPTIONS = ['Oh yeah!', 'Rock god', 'Birthday boy', 'Legend', 'Red alert', 'Tea party!'];
 
 /* ------------------------------------------------------------------
    Helpers
@@ -485,13 +491,12 @@ function buildKnows() {
 }
 
 function buildReel() {
-  // Six frames, then the same six again, so the loop has no seam.
-  const frames = CAPTIONS.map((caption, i) => {
-    const photo = PHOTOS[i % PHOTOS.length];
+  // All photos, then the same photos again, so the loop has no seam.
+  const frames = PHOTOS.map((photo, i) => {
     const r = (i % 2 ? 1 : -1) * rand(1.5, 4);
     return `<figure class="polaroid" style="--r:${r.toFixed(1)}deg">
-      <img src="${photo.src}" width="${photo.w}" height="${photo.h}" alt="${photo.alt}" loading="lazy">
-      <figcaption>${caption}</figcaption>
+      <img src="${photo.src}" width="${photo.w}" height="${photo.h}" alt="${photo.alt}" decoding="async">
+      <figcaption>${photo.caption}</figcaption>
     </figure>`;
   }).join('');
   $('reel').innerHTML = frames + frames.replace(/alt="[^"]*"/g, 'alt="" aria-hidden="true"');
