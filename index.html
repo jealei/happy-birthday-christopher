@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Something huge happens at midnight</title>
+  <meta name="description" content="The world is holding its breath. Turn the sound up.">
+  <meta property="og:title" content="Something huge happens at midnight">
+  <meta property="og:description" content="The world is holding its breath. Turn the sound up.">
+  <meta property="og:image" content="https://jealei.github.io/happy-birthday-christopher/images/og.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0b0607">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎸</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="is-locked">
+  <canvas id="fx" aria-hidden="true"></canvas>
+
+  <!-- 1. Gate: one click unlocks sound in the browser -->
+  <section id="gate" class="layer gate">
+    <p class="gate__label" id="gateLabel">Incoming transmission</p>
+    <h1 class="gate__title" id="gateTitle">Something huge<br>happens at midnight</h1>
+    <button id="enter" class="btn" type="button">Turn the sound up &amp; enter</button>
+    <p class="gate__hint">Headphones are for cowards. Use speakers.</p>
+  </section>
+
+  <!-- 2. The countdown -->
+  <section id="countdown" class="layer countdown" hidden>
+    <div class="stage" aria-hidden="true">
+      <div class="fog"></div>
+      <div class="beam beam--left"></div>
+      <div class="beam beam--right"></div>
+      <div class="vignette"></div>
+    </div>
+
+    <p class="countdown__label">T-minus</p>
+    <div class="timer" id="timer" role="timer">
+      <span class="pair" id="hh"><span class="d">0</span><span class="d">0</span></span><span class="colon">:</span><span class="pair" id="mm"><span class="d">0</span><span class="d">0</span></span><span class="colon">:</span><span class="pair" id="ss"><span class="d">0</span><span class="d">0</span></span><span class="cs" id="cs">.00</span>
+    </div>
+    <p class="phrase" id="phrase">The world is holding its breath</p>
+
+    <div class="loading">
+      <div class="loading__row"><span>Birthday loading</span><span id="pct">0.000000%</span></div>
+      <div class="loading__bar"><div id="bar"></div></div>
+    </div>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker__track" id="ticker"></div></div>
+  </section>
+
+  <!-- 3. The last ten seconds -->
+  <div id="final" class="final" hidden><span id="finalNum"></span></div>
+
+  <!-- 4. White flash at midnight -->
+  <div id="flash" class="flash" aria-hidden="true"></div>
+
+  <!-- 5. The party -->
+  <main id="party" class="party">
+    <header class="hero" id="hero">
+      <p class="hero__happy">Happy</p>
+      <h1 class="hero__big">Birthday</h1>
+      <p class="hero__hand hero__hand--1">to the greatest</p>
+      <h2 class="hero__name"><span>Christopher</span><span>Haugan</span><span>Lyngedal</span></h2>
+      <p class="hero__hand hero__hand--2">I know</p>
+      <p class="hero__world">AND THE WORLD KNOWS!</p>
+      <p class="hero__scroll">scroll ↓</p>
+    </header>
+
+    <div class="stripes" aria-hidden="true"></div>
+
+    <section class="knows" id="knows" aria-labelledby="knowsTitle">
+      <p class="label" id="knowsTitle">Global status report</p>
+      <ul id="knowsList"></ul>
+    </section>
+
+    <section class="reel" aria-labelledby="reelTitle">
+      <h3 class="section-title" id="reelTitle">Ramonas Tea Party</h3>
+      <div class="reel__window"><div class="reel__track" id="reel"></div></div>
+    </section>
+
+    <section class="player" aria-labelledby="playerTitle">
+      <p class="label">Now playing</p>
+      <h3 class="section-title" id="playerTitle">Oh Yeah</h3>
+      <div class="player__card"><div id="spotify"></div></div>
+      <p class="player__hint">No music? Hit ▶ on the player. <a href="https://open.spotify.com/track/3OBdxB44t6P7k5xyPxb3WZ" target="_blank" rel="noopener">Open in Spotify ↗</a></p>
+    </section>
+
+    <footer class="footer">
+      <button id="replay" class="btn btn--small" type="button">Do the countdown again</button>
+      <p>Made with love and far too much drama · 12.11</p>
+    </footer>
+  </main>
+
+  <button id="mute" class="mute" type="button" aria-label="Mute sound effects" hidden>🔊</button>
+
+  <script src="app.js"></script>
+  <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+</body>
+</html>
